@@ -1,0 +1,15 @@
+ldaptest_ldap:
+  build: ./images/ldap
+  ports: 
+    - "389:389"   
+  links:
+    - ldaptest_postgres
+    
+ldaptest_postgres:
+  build: ./images/postgres
+  ports: 
+    - "5432:5432"
+  environment:
+    - POSTGRES_USER=ldaptest
+    - POSTGRES_PASSWORD=ldaptest
+    
